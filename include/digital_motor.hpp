@@ -22,7 +22,6 @@ class DigitalMotor {
    public:
       DigitalMotor(int forward_pin, int reverse_pin, int enable_pin);
       void setOutput(double output);
-      void playSound(int milliseconds);
 };
 
 #endif // DIGITAL_MOTOR_H

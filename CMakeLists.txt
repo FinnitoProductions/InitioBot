@@ -20,6 +20,7 @@ set(project_SRCS
   src/obstacle_sensor.cpp
   src/servo.cpp
   src/utilities.cpp
+  src/console_reader.cpp
   )
 
 set(project_HEADERS
@@ -32,6 +33,7 @@ set(project_HEADERS
   include/obstacle_sensor.hpp
   include/servo.hpp
   include/utilities.hpp
+  include/console_reader.hpp
   )
 
 add_executable(initiobot ${project_SRCS} ${project_HEADERS})
