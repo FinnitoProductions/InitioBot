@@ -59,12 +59,12 @@ void Drivetrain::periodic() {
    //    maxDigitalOutput = std::min(maxDigitalOutput / SLOW_DOWN_RATE, 1.0);
    // }
 
-   leftOutput = InputDevices::getInstance()->getLeftObstacleSensor().getTriggered();
+   leftOutput = InputDevices::getInstance()->getLeftObstacleSensor().getTriggered(); 
    rightOutput = InputDevices::getInstance()->getRightObstacleSensor().getTriggered();
 
-   setBothOutputs(leftOutput * maxDigitalOutput, rightOutput * maxDigitalOutput);
+   // setBothOutputs(leftOutput * maxDigitalOutput, rightOutput * maxDigitalOutput);
 
-   std::cout << InputDevices::getInstance()->getLeftObstacleSensor().getTriggered() << ", " << InputDevices::getInstance()->getRightObstacleSensor().getTriggered() << std::endl;
+   // std::cout << InputDevices::getInstance()->getLeftObstacleSensor().getTriggered() << ", " << InputDevices::getInstance()->getRightObstacleSensor().getTriggered() << std::endl;
 }
 
 void Drivetrain::setBothOutputs (double left_output, double right_output) {

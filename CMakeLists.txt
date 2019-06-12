@@ -18,6 +18,8 @@ set(project_SRCS
   src/subsystem.cpp
   src/input_devices.cpp
   src/obstacle_sensor.cpp
+  src/servo.cpp
+  src/utilities.cpp
   )
 
 set(project_HEADERS
@@ -28,6 +30,8 @@ set(project_HEADERS
   include/subsystem.hpp
   include/input_devices.hpp
   include/obstacle_sensor.hpp
+  include/servo.hpp
+  include/utilities.hpp
   )
 
 add_executable(initiobot ${project_SRCS} ${project_HEADERS})
