@@ -8,7 +8,9 @@
 #include <pigpio.h>
 #include <obstacle_sensor.hpp>
 
-ObstacleSensor::ObstacleSensor(int gpio_pin) : gpioPin(gpio_pin) {}
+ObstacleSensor::ObstacleSensor(int gpio_pin) : gpioPin(gpio_pin) {
+   gpioSetMode(gpio_pin, PI_INPUT);
+}
 
 DigitalSensorState ObstacleSensor::getTriggered() {
    int currentValue = gpioRead(gpioPin);
