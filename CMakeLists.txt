@@ -16,6 +16,8 @@ set(project_SRCS
   src/drivetrain.cpp
   src/scheduler.cpp
   src/subsystem.cpp
+  src/input_devices.cpp
+  src/obstacle_sensor.cpp
   )
 
 set(project_HEADERS
@@ -24,6 +26,8 @@ set(project_HEADERS
   include/robot_map.hpp
   include/scheduler.hpp
   include/subsystem.hpp
+  include/input_devices.hpp
+  include/obstacle_sensor.hpp
   )
 
 add_executable(initiobot ${project_SRCS} ${project_HEADERS})

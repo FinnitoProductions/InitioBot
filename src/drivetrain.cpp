@@ -9,6 +9,7 @@
 #include <iostream>
 #include <algorithm>
 #include <robot_map.hpp>
+#include <input_devices.hpp>
 
 
 double maxDigitalOutput = 1;
@@ -21,43 +22,44 @@ Drivetrain::Drivetrain() {
 }
 
 void Drivetrain::periodic() {
-   char x;
-   std::cin >> x;
+   // char x;
+   // std::cin >> x;
 
-   if (x == FORWARD_CHAR) {
-      std::cout << "forward" << std::endl;
-      leftOutput = 1;
-      rightOutput = 1;
-   }
-   else if (x == REVERSE_CHAR) {
-      std::cout << "reverse" << std::endl;
-      leftOutput = -1;
-      rightOutput = -1;
-   }
-   else if (x == LEFT_CHAR) {
-      std::cout << "left" << std::endl;
-      leftOutput = -1;
-      rightOutput = 1;
-   }
-   else if (x == RIGHT_CHAR) {
-      std::cout << "right" << std::endl;
-      leftOutput = 1;
-      rightOutput = -1;
-   }
-   else if (x == STOP_CHAR) {
-      std::cout << "stop" << std::endl;
-      leftOutput = 0;
-      rightOutput = 0;
-   }
-   else if (x == SLOW_DOWN_CHAR) {
-      std::cout << "slow down " << std::endl;
-      maxDigitalOutput *= SLOW_DOWN_RATE;
-   }
-   else if (x == SPEED_UP_CHAR) {
-      std::cout << "speed up" << std::endl;
-      maxDigitalOutput = std::min(maxDigitalOutput / SLOW_DOWN_RATE, 1.0);
-   }
-   setBothOutputs(leftOutput * maxDigitalOutput, rightOutput * maxDigitalOutput);
+   // if (x == FORWARD_CHAR) {
+   //    std::cout << "forward" << std::endl;
+   //    leftOutput = 1;
+   //    rightOutput = 1;
+   // }
+   // else if (x == REVERSE_CHAR) {
+   //    std::cout << "reverse" << std::endl;
+   //    leftOutput = -1;
+   //    rightOutput = -1;
+   // }
+   // else if (x == LEFT_CHAR) {
+   //    std::cout << "left" << std::endl;
+   //    leftOutput = -1;
+   //    rightOutput = 1;
+   // }
+   // else if (x == RIGHT_CHAR) {
+   //    std::cout << "right" << std::endl;
+   //    leftOutput = 1;
+   //    rightOutput = -1;
+   // }
+   // else if (x == STOP_CHAR) {
+   //    std::cout << "stop" << std::endl;
+   //    leftOutput = 0;
+   //    rightOutput = 0;
+   // }
+   // else if (x == SLOW_DOWN_CHAR) {
+   //    std::cout << "slow down " << std::endl;
+   //    maxDigitalOutput *= SLOW_DOWN_RATE;
+   // }
+   // else if (x == SPEED_UP_CHAR) {
+   //    std::cout << "speed up" << std::endl;
+   //    maxDigitalOutput = std::min(maxDigitalOutput / SLOW_DOWN_RATE, 1.0);
+   // }
+   // setBothOutputs(leftOutput * maxDigitalOutput, rightOutput * maxDigitalOutput);
+   std::cout << InputDevices::getInstance()->getLeftObstacleSensor().getTriggered() << ", " << InputDevices::getInstance()->getRightObstacleSensor().getTriggered() << std::endl;
 }
 
 void Drivetrain::setBothOutputs (double left_output, double right_output) {

@@ -18,6 +18,8 @@
 int main() {
    gpioInitialise(); // must be called in any pigpio program before interfacing with GPIO
    std::cout << "GPIO initialized." << std::endl;
+   
+   gpioSetMode(15, PI_INPUT);
 
    Drivetrain* d = Drivetrain::getInstance();
 
