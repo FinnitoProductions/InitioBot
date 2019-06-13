@@ -11,7 +11,7 @@
 
 ConsoleReader* ConsoleReader::instance = 0;
 
-ConsoleReader::ConsoleReader() : thread([]() {
+ConsoleReader::ConsoleReader() : wasInputUsed(false), thread([]() {
       while(true) {
          char input;
          std::cin >> input;
@@ -33,4 +33,13 @@ char ConsoleReader::getCurrentReading() {
 
 void ConsoleReader::setCurrentReading(char new_reading) {
    currentReading = new_reading;
+   wasInputUsed = false;
+}
+
+bool ConsoleReader::getInputUsed() {
+   return wasInputUsed;
+}
+
+void ConsoleReader::setInputUsed(bool new_input_used) {
+   wasInputUsed = new_input_used;
 }

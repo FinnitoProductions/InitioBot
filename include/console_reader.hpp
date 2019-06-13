@@ -15,11 +15,14 @@ class ConsoleReader {
       static ConsoleReader* getInstance();
       char getCurrentReading();
       void setCurrentReading(char new_reading);
+      bool getInputUsed();
+      void setInputUsed(bool new_input_used);
+      std::thread thread;
    private:
       static ConsoleReader* instance;
       char currentReading;
       ConsoleReader();
-      std::thread thread;
+      bool wasInputUsed; // whether or not the most recent input has been used
 };
 
 #endif // CONSOLEREADER_H
