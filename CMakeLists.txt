@@ -21,6 +21,7 @@ set(project_SRCS
   src/servo.cpp
   src/utilities.cpp
   src/console_reader.cpp
+  src/arm.cpp
   )
 
 set(project_HEADERS
@@ -34,6 +35,7 @@ set(project_HEADERS
   include/servo.hpp
   include/utilities.hpp
   include/console_reader.hpp
+  include/arm.hpp
   )
 
 add_executable(initiobot ${project_SRCS} ${project_HEADERS})

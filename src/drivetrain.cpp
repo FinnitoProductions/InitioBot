@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <robot_map.hpp>
 #include <input_devices.hpp>
+#include <console_reader.hpp>
 
 
 double maxDigitalOutput = 1;
@@ -22,47 +23,53 @@ Drivetrain::Drivetrain() {
 }
 
 void Drivetrain::periodic() {
-   // char x;
-   // std::cin >> x;
+   char x = ConsoleReader::getInstance()->getCurrentReading();
 
-   // if (x == FORWARD_CHAR) {
-   //    std::cout << "forward" << std::endl;
-   //    leftOutput = 1;
-   //    rightOutput = 1;
-   // }
-   // else if (x == REVERSE_CHAR) {
-   //    std::cout << "reverse" << std::endl;
-   //    leftOutput = -1;
-   //    rightOutput = -1;
-   // }
-   // else if (x == LEFT_CHAR) {
-   //    std::cout << "left" << std::endl;
-   //    leftOutput = -1;
-   //    rightOutput = 1;
-   // }
-   // else if (x == RIGHT_CHAR) {
-   //    std::cout << "right" << std::endl;
-   //    leftOutput = 1;
-   //    rightOutput = -1;
-   // }
-   // else if (x == STOP_CHAR) {
-   //    std::cout << "stop" << std::endl;
-   //    leftOutput = 0;
-   //    rightOutput = 0;
-   // }
-   // else if (x == SLOW_DOWN_CHAR) {
-   //    std::cout << "slow down " << std::endl;
-   //    maxDigitalOutput *= SLOW_DOWN_RATE;
-   // }
-   // else if (x == SPEED_UP_CHAR) {
-   //    std::cout << "speed up" << std::endl;
-   //    maxDigitalOutput = std::min(maxDigitalOutput / SLOW_DOWN_RATE, 1.0);
-   // }
+   bool wasInputUsed = ConsoleReader::getInstance()->getInputUsed();
+   if (x == FORWARD_CHAR) {
+      std::cout << "forward" << std::endl;
+      leftOutput = 1;
+      rightOutput = 1;
+      ConsoleReader::getInstance()->setInputUsed(true);
+   }
+   else if (x == REVERSE_CHAR) {
+      std::cout << "reverse" << std::endl;
+      leftOutput = -1;
+      rightOutput = -1;
+      ConsoleReader::getInstance()->setInputUsed(true);
+   }
+   else if (x == LEFT_CHAR) {
+      std::cout << "left" << std::endl;
+      leftOutput = -1;
+      rightOutput = 1;
+      ConsoleReader::getInstance()->setInputUsed(true);
+   }
+   else if (x == RIGHT_CHAR) {
+      std::cout << "right" << std::endl;
+      leftOutput = 1;
+      rightOutput = -1;
+      ConsoleReader::getInstance()->setInputUsed(true);
+   }
+   else if (x == STOP_CHAR) {
+      std::cout << "stop" << std::endl;
+      leftOutput = 0;
+      rightOutput = 0;
+      ConsoleReader::getInstance()->setInputUsed(true);
+   }
+   else if (x == SLOW_DOWN_CHAR && !wasInputUsed) {
+      std::cout << "slow down " << std::endl;
+      maxDigitalOutput *= SLOW_DOWN_RATE;
+      ConsoleReader::getInstance()->setInputUsed(true);
+   }
+   else if (x == SPEED_UP_CHAR && !wasInputUsed) {
+      std::cout << "speed up" << std::endl;
+      maxDigitalOutput = std::min(maxDigitalOutput / SLOW_DOWN_RATE, 1.0);
+      ConsoleReader::getInstance()->setInputUsed(true);
+   }
 
-   leftOutput = InputDevices::getInstance()->getLeftObstacleSensor().getTriggered(); 
-   rightOutput = InputDevices::getInstance()->getRightObstacleSensor().getTriggered();
-
-   // setBothOutputs(leftOutput * maxDigitalOutput, rightOutput * maxDigitalOutput);
+   // leftOutput = InputDevices::getInstance()->getLeftObstacleSensor().getTriggered(); 
+   // rightOutput = InputDevices::getInstance()->getRightObstacleSensor().getTriggered();
+   setBothOutputs(leftOutput * maxDigitalOutput, rightOutput * maxDigitalOutput);
 
    // std::cout << InputDevices::getInstance()->getLeftObstacleSensor().getTriggered() << ", " << InputDevices::getInstance()->getRightObstacleSensor().getTriggered() << std::endl;
 }

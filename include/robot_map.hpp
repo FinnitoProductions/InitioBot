@@ -16,4 +16,7 @@ const int FORWARD_RIGHT_DRIVE = 3;
 const int REVERSE_RIGHT_DRIVE = 2;
 const int ENABLE_RIGHT_DRIVE = 4;
 
+const int ARM_SERVO = 18;
+const int TURRET_SERVO = 13;
+
 #endif // ROBOTMAP_H

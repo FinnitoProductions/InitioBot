@@ -8,6 +8,7 @@
 #include <pigpio.h>
 #include <servo.hpp>
 #include <utilities.hpp>
+#include <iostream>
 
 Servo::Servo(int gpio_pin) : gpioPin(gpio_pin) {
    gpioSetMode(gpio_pin, PI_OUTPUT);
