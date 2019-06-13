@@ -22,6 +22,7 @@ set(project_SRCS
   src/utilities.cpp
   src/console_reader.cpp
   src/arm.cpp
+  src/turret.cpp
   )
 
 set(project_HEADERS
@@ -36,6 +37,7 @@ set(project_HEADERS
   include/utilities.hpp
   include/console_reader.hpp
   include/arm.hpp
+  include/turret.hpp
   )
 
 add_executable(initiobot ${project_SRCS} ${project_HEADERS})

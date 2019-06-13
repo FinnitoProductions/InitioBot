@@ -16,6 +16,7 @@
 #include <drivetrain.hpp>
 #include <arm.hpp>
 #include <console_reader.hpp>
+#include <turret.hpp>
 
 int main() {
    gpioInitialise(); // must be called in any pigpio program before interfacing with GPIO
@@ -23,6 +24,7 @@ int main() {
 
    Drivetrain* d = Drivetrain::getInstance();
    Arm* a = Arm::getInstance();
+   Turret* t = Turret::getInstance();
 
    gpioSetMode(18, PI_OUTPUT);
    gpioSetMode(13, PI_OUTPUT);
